@@ -1,0 +1,28 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Phone</th>
+        <th>Pessoa</th>
+        <th>Tipo</th>
+    </thead>
+    <tbody>
+        {% for phone in object_list %}
+        <tr>
+            <td>{{ phone.phone }}</td>
+            <td>{{ phone.person }}</td>
+            <td>{{ phone.get_type_display }}</td>
+            <td>
+                <a href="{% url 'person:phone_update' phone.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'person:phone_delete' phone.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

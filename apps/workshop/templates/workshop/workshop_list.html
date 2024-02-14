@@ -1,0 +1,27 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Oficina</th>
+        <th>Fazenda</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        {% for workshop in object_list %}
+        <tr>
+            <td>{{ workshop.name }}</td>
+            <td>{{ workshop.farm }}</td>
+            <td>
+                <a href="{% url 'workshop:workshop_update' workshop.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'workshop:workshop_delete' workshop.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

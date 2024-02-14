@@ -1,0 +1,32 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Cargo</th>
+        <th>Departamento</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        {% for employee in object_list %}
+        <tr>
+            <td>{{ employee.person.name }}</td>
+            <td>{{ employee.department_employee }}</td>
+            <td>{{ employee.position.position }}</td>
+            <td>{{ employee.get_status_display }}</td>
+            <td>
+                <a href="{% url 'employee:employee_update' employee.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'employee:employee_delete' employee.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

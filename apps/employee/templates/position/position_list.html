@@ -1,0 +1,28 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Endereço</th>
+        <th>Número</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        {% for position in object_list %}
+        <tr>
+            <td>{{ position.position }}</td>
+            <td>{{ position.description }}</td>
+            <td>
+                <a href="{% url 'employee:position_update' position.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'employee:position_delete' position.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

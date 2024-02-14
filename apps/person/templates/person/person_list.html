@@ -1,0 +1,35 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Número</th>
+        <th>CEP</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        {% for person in object_list %}
+        <tr>
+            <td>{{ person.name }}</td>
+            <td>{{ person.document }}</td>
+            <td>{{ person.rg }}</td>
+            <td>{{ person.birth_date }}</td>
+            <td>{{ person.addresses }}</td>
+            <td>{{ person.phone }}</td>
+            <td>{{ person.email }}</td>
+            <td>
+                <a href="{% url 'person:person_update' person.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'person:person_delete' person.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

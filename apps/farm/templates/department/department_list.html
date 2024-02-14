@@ -1,0 +1,27 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Departamento</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        {% for department in object_list %}
+        <tr>
+            <td>{{ department.department }}</td>
+            <td>{{ department.description }}</td>
+            <td>
+                <a href="{% url 'farm:department_update' department.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'farm:department_delete' department.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

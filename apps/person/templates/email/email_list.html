@@ -1,0 +1,31 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Número</th>
+        <th>CEP</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        {% for email in object_list %}
+        <tr>
+            <td>{{ email.email }}</td>
+            <td>{{ email.person }}</td>
+            <td>{{ email.get_type_display }}</td>
+            <td>
+                <a href="{% url 'person:email_update' email.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'person:email_delete' email.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
