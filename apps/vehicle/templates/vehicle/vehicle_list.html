@@ -1,0 +1,30 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>brand</th>
+        <th>Modelo</th>
+        <th>Ano de Fabricação</th>
+    </thead>
+    <tbody>
+        {% for vehicle in object_list %}
+        <tr>
+            <td>{{ vehicle.name }}</td>
+            <td>{{ vehicle.brand }}</td>
+            <td>{{ vehicle.model }}</td>
+            <td>{{ vehicle.year_of_manufacture }}</td>
+            <td>
+                <a href="{% url 'vehicle:vehicle_update' vehicle.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'vehicle:vehicle_delete' vehicle.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Descrição</th>
+    </thead>
+    <tbody>
+        {% for fleet in object_list %}
+        <tr>
+            <td>{{ fleet.name }}</td>
+            <td>{{ fleet.description }}</td>
+            <td>
+                <a href="{% url 'vehicle:fleet_update' fleet.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'vehicle:fleet_delete' fleet.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

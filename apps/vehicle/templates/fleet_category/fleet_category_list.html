@@ -1,0 +1,26 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Descrição</th>
+    </thead>
+    <tbody>
+        {% for fleet_category in object_list %}
+        <tr>
+            <td>{{ fleet_category.name }}</td>
+            <td>{{ fleet_category.description }}</td>
+            <td>
+                <a href="{% url 'vehicle:fleet_category_update' fleet_category.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'vehicle:fleet_category_delete' fleet_category.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

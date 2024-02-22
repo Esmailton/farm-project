@@ -18,8 +18,8 @@ class Country(Base, models.Model):
 
 
 class UF(Base, models.Model):
-    name = models.CharField(_("State"), unique=True, max_length=50)
-    acronym = models.CharField(_("Acronym"), unique=True, max_length=2)
+    name = models.CharField(_("State"), max_length=50)
+    acronym = models.CharField(_("Acronym"), max_length=2)
     country = models.ForeignKey(
         Country,
         on_delete=models.CASCADE,

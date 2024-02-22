@@ -79,7 +79,7 @@ class VehicleModel(Base):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("vehicle:model_detail", kwargs={"pk": self.pk})
+        return reverse("vehicle:vehicle_model_detail", kwargs={"pk": self.pk})
 
 
 class Vehicle(Base):
@@ -106,8 +106,8 @@ class Vehicle(Base):
     )
     serial_number = models.CharField(_("Serial Number"), max_length=150)
     plate = models.CharField(_("Plate"), max_length=15)
-    hour_meter = models.CharField(_("Hour Meter"), max_length=15, null=True, blank=True)
-    mileage = models.CharField(_("Mileage"), max_length=15, null=True, blank=True)
+    hour_meter = models.IntegerField(_("Hour Meter"), null=True, blank=True)
+    mileage = models.IntegerField(_("Mileage"), null=True, blank=True)
     status = models.CharField(_("Status"), choices=VEHICLE_STATUS_CHOICES, max_length=3)
     farm = models.OneToOneField(
         Farm,
@@ -137,22 +137,3 @@ class Vehicle(Base):
 
     def get_absolute_url(self):
         return reverse("vehicle:vehicle_detail", kwargs={"pk": self.pk})
-
-
-class MaintenanceHistory(models.Model):
-    vehicle = models.ForeignKey(
-        Vehicle, verbose_name=_("Vehicle"), on_delete=models.CASCADE
-    )
-    maintenance_date = models.DateField(_("Maintenance Date"))
-    description = models.TextField(_("Description"))
-    cost = models.DecimalField(_("Cost"), max_digits=10, decimal_places=2)
-
-    class Meta:
-        verbose_name = _("Maintenance History")
-        verbose_name_plural = _("Maintenance Histories")
-
-    def __str__(self):
-        return f"{self.vehicle} - {self.maintenance_date}"
-
-    def get_absolute_url(self):
-        return reverse("vehicle:maintenance_history_detail", kwargs={"pk": self.pk})

@@ -1,0 +1,26 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>description</th>
+    </thead>
+    <tbody>
+        {% for brand in object_list %}
+        <tr>
+            <td>{{ brand.name }}</td>
+            <td>{{ brand.description }}</td>
+            <td>
+                <a href="{% url 'vehicle:brand_update' brand.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'vehicle:brand_delete' brand.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

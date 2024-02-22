@@ -1,0 +1,26 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Descrição</th>
+    </thead>
+    <tbody>
+        {% for vehicle_model in object_list %}
+        <tr>
+            <td>{{ vehicle_model.name }}</td>
+            <td>{{ vehicle_model.description }}</td>
+            <td>
+                <a href="{% url 'vehicle:vehicle_model_update' vehicle_model.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'vehicle:vehicle_model_delete' vehicle_model.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
