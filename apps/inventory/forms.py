@@ -5,7 +5,7 @@ from apps.inventory.models import Category, ColumnSpace, Inventory, LineSpace, M
 class StreetForm(ModelForm):
     class Meta:
         model = Street
-        fields =['name', 'description']
+        fields =['name', 'inventory', 'description']
 
 class ShelfForm(ModelForm):
     class Meta:
@@ -72,7 +72,6 @@ class InventoryForm(ModelForm):
     class Meta:
         model = Inventory
         fields = [
-            'name',
-            'street',
-            'farm'
+                'name',
+                'farm'
                 ]

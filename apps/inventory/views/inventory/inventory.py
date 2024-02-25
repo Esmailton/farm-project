@@ -6,7 +6,7 @@ from apps.inventory.models import Inventory
 class InventoryListView(generic.ListView):
     model = Inventory
     paginate_by = 10
-    queryset = Inventory.objects.select_related('farm', 'street').all()
+    queryset = Inventory.objects.select_related('farm').all()
     template_name = 'inventory/inventory_list.html'
 
 class InventoryCreateView(generic.CreateView):

@@ -12,7 +12,7 @@ class ColumnSpaceListView(generic.ListView):
 class ColumnSpaceCreateView(generic.CreateView):
     model = ColumnSpace
     form_class = ColumnSpaceForm
-    success_url = reverse_lazy('business:column_space_list')
+    success_url = reverse_lazy('inventory:column_space_list')
     queryset = ColumnSpace.objects.all()
     template_name = 'column_space/column_space_form.html'
 

@@ -12,7 +12,7 @@ class ProductInventoryListView(generic.ListView):
 class ProductInventoryCreateView(generic.CreateView):
     model = ProductInventory
     form_class = ProductInventoryForm
-    success_url = reverse_lazy('business:product_inventory_list')
+    success_url = reverse_lazy('inventory:product_inventory_list')
     queryset = ProductInventory.objects.all()
     template_name = 'product_inventory/product_inventory_form.html'
 

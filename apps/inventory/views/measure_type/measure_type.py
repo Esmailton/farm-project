@@ -12,7 +12,7 @@ class MeasureTypeListView(generic.ListView):
 class MeasureTypeCreateView(generic.CreateView):
     model = MeasureType
     form_class = MeasureTypeForm
-    success_url = reverse_lazy('business:measure_type_list')
+    success_url = reverse_lazy('inventory:measure_type_list')
     queryset = MeasureType.objects.all()
     template_name = 'measure_type/measure_type_form.html'
 

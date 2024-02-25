@@ -12,7 +12,7 @@ class StreetListView(generic.ListView):
 class StreetCreateView(generic.CreateView):
     model = Street
     form_class = StreetForm
-    success_url = reverse_lazy('inventory:Street_list')
+    success_url = reverse_lazy('inventory:street_list')
     queryset = Street.objects.all()
     template_name = 'street/street_form.html'
 
@@ -27,5 +27,5 @@ class StreetDetailView(generic.DetailView):
 
 class StreetDeleteView(generic.DeleteView):
     model = Street
-    success_url = reverse_lazy('person:Street_list')
+    success_url = reverse_lazy('person:street_list')
     template_name = 'street/street_confirm_delete.html'

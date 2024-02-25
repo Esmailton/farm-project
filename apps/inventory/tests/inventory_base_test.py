@@ -9,9 +9,11 @@ class FakeDataFactory:
 
     def create_street(self):
         name = self.fake.word()
+        inventory=self.create_inventory()
         description = self.fake.paragraph(nb_sentences=3)
         return Street.objects.create(
             name=name,
+            inventory = inventory,
             description=description,
         )
 
@@ -41,11 +43,9 @@ class FakeDataFactory:
 
     def create_inventory(self):
         name = self.fake.word()
-        street = self.create_street()
         farm = self.farm.create_farm()
         return Inventory.objects.create(
             name=name,
-            street=street,
             farm = farm
         )
     

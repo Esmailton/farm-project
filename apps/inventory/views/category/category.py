@@ -12,7 +12,7 @@ class CategoryListView(generic.ListView):
 class CategoryCreateView(generic.CreateView):
     model = Category
     form_class = CategoryForm
-    success_url = reverse_lazy('business:category_list')
+    success_url = reverse_lazy('inventory:category_list')
     queryset = Category.objects.all()
     template_name = 'category/category_form.html'
 

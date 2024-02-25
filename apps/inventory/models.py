@@ -6,8 +6,32 @@ from django.db.models import UniqueConstraint
 from django.urls import reverse
 
 
+class Inventory(Base, models.Model):
+    name = models.CharField(_("Name"), max_length=150)
+    farm = models.ForeignKey(
+        Farm, on_delete=models.CASCADE, related_name="farm_inventory"
+    )
+
+    class Meta:
+        verbose_name = _("Inventory")
+        verbose_name_plural = _("Inventories")
+        ordering = ["-created_at"]
+        constraints = [
+            UniqueConstraint(
+                "name",
+                name="unique_farm_name",
+            ),
+        ]
+
+    def get_absolute_url(self):
+        return reverse("inventory:inventory_detail", kwargs={"pk": self.id})
+
+    def __str__(self):
+        return self.name
+
 class Street(Base, models.Model):
     name = models.CharField(_("Name"), max_length=150)
+    inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE, related_name="streets")
     description = models.TextField(_("Description"), max_length=100)
 
     class Meta:
@@ -93,32 +117,6 @@ class ColumnSpace(Base, models.Model):
 
     def __str__(self):
         return self.column
-
-
-class Inventory(Base, models.Model):
-    name = models.CharField(_("Name"), max_length=150)
-    farm = models.ForeignKey(
-        Farm, on_delete=models.CASCADE, related_name="farm_inventory"
-    )
-    street = models.ForeignKey(Street, on_delete=models.CASCADE, related_name="streets", blank=True, null=True)
-
-    class Meta:
-        verbose_name = _("Inventory")
-        verbose_name_plural = _("Inventories")
-        ordering = ["-created_at"]
-        constraints = [
-            UniqueConstraint(
-                "name",
-                name="unique_farm_name",
-            ),
-        ]
-
-    def get_absolute_url(self):
-        return reverse("inventory:inventory_detail", kwargs={"pk": self.id})
-
-    def __str__(self):
-        return self.name
-
 
 class Category(Base, models.Model):
     name = models.CharField(_("Name"), max_length=100)
