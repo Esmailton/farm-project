@@ -1,0 +1,43 @@
+
+<style>
+    li {
+        box-sizing: border-box;
+        padding-bottom: 20px;
+    }
+</style>
+
+<table>
+    <thead>
+        <th>Nome</th>
+        <th>Proprietario</th>
+        <th>Gerente</th>
+        <th>Localização</th>
+        <th>Tamanho</th>
+        <th>latitude/longitude</th>
+        <th>Departamentos</th>
+        <th>Ações</th>
+    </thead>
+    <tbody>
+        {% for farm in object_list %}
+        <tr>
+            <td>{{ farm.name }}</td>
+            <td>{{ farm.owner }}</td>
+            <td>{{ farm.manager }}</td>
+            <td>{{ farm.location }}</td>
+            <td>{{ farm.size_hc }}</td>
+            <td>{{ farm.latitude }} - {{ farm.longitude }}</td>
+            <td>
+                <ul>
+                    {% for department in farm.departments.all %}
+                        <li> {{ department }} </li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <a href="{% url 'farm:farm_update' farm.pk %}" ><strong>EDIT</strong></a>
+                <a href="{% url 'farm:farm_delete' farm.pk %}" ><strong>DELETE</strong></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

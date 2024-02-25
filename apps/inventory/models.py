@@ -8,6 +8,7 @@ from django.urls import reverse
 
 class Street(Base, models.Model):
     name = models.CharField(_("Name"), max_length=150)
+    description = models.TextField(_("Description"), max_length=100)
 
     class Meta:
         verbose_name = _("Street")
@@ -15,7 +16,7 @@ class Street(Base, models.Model):
         ordering = ["-created_at"]
 
     def get_absolute_url(self):
-        return reverse("invetory:street_detail", kwargs={"pk": self.id})
+        return reverse("inventory:street_detail", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.name
@@ -38,7 +39,7 @@ class Shelf(Base, models.Model):
         ]
 
     def get_absolute_url(self):
-        return reverse("invetory:shelf_detail", kwargs={"pk": self.id})
+        return reverse("inventory:shelf_detail", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.name
@@ -63,7 +64,7 @@ class LineSpace(Base, models.Model):
         ]
 
     def get_absolute_url(self):
-        return reverse("invetory:line_space_detail", kwargs={"pk": self.id})
+        return reverse("inventory:line_space_detail", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.line
@@ -88,7 +89,7 @@ class ColumnSpace(Base, models.Model):
         ]
 
     def get_absolute_url(self):
-        return reverse("invetory:column_space_detail", kwargs={"pk": self.id})
+        return reverse("inventory:column_space_detail", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.column
@@ -97,9 +98,9 @@ class ColumnSpace(Base, models.Model):
 class Inventory(Base, models.Model):
     name = models.CharField(_("Name"), max_length=150)
     farm = models.ForeignKey(
-        Farm, on_delete=models.CASCADE, related_name="farm_invetory"
+        Farm, on_delete=models.CASCADE, related_name="farm_inventory"
     )
-    street = models.ForeignKey(Shelf, on_delete=models.CASCADE, related_name="streets")
+    street = models.ForeignKey(Street, on_delete=models.CASCADE, related_name="streets", blank=True, null=True)
 
     class Meta:
         verbose_name = _("Inventory")
@@ -111,6 +112,9 @@ class Inventory(Base, models.Model):
                 name="unique_farm_name",
             ),
         ]
+
+    def get_absolute_url(self):
+        return reverse("inventory:inventory_detail", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.name
@@ -132,7 +136,7 @@ class Category(Base, models.Model):
         ]
 
     def get_absolute_url(self):
-        return reverse("business:category_detail", kwargs={"pk": self.id})
+        return reverse("inventory:category_detail", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.name
@@ -159,7 +163,7 @@ class MeasureType(Base, models.Model):
         ]
 
     def get_absolute_url(self):
-        return reverse("business:measure_type_detail", kwargs={"pk": self.id})
+        return reverse("inventory:measure_type_detail", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.name
@@ -208,19 +212,19 @@ class Product(Base, models.Model):
         ]
 
     def get_absolute_url(self):
-        return reverse("business:product_detail", kwargs={"pk": self.id})
+        return reverse("inventory:product_detail", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.name
 
 
-class ProductInvetory(Base, models.Model):
+class ProductInventory(Base, models.Model):
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name="product_invetory",
+        related_name="product_inventory",
     )
     street = models.ForeignKey(
         Street,
@@ -229,6 +233,7 @@ class ProductInvetory(Base, models.Model):
         null=True,
         related_name="product_street",
     )
+    
     shelf = models.ForeignKey(
         Shelf,
         on_delete=models.CASCADE,
@@ -254,8 +259,8 @@ class ProductInvetory(Base, models.Model):
     reorder_point = models.PositiveIntegerField(_("Reorder Point"), default=10)
 
     class Meta:
-        verbose_name = _("Product Invetory")
-        verbose_name_plural = _("Products Invetory")
+        verbose_name = _("Product inventory")
+        verbose_name_plural = _("Products inventory")
         ordering = ["-created_at"]
         constraints = [
             UniqueConstraint(
@@ -273,7 +278,7 @@ class ProductInvetory(Base, models.Model):
         ]
 
     def get_absolute_url(self):
-        return reverse("business:product_detail", kwargs={"pk": self.id})
+        return reverse("inventory:product_inventory_detail", kwargs={"pk": self.id})
 
     def __str__(self):
         return f"{self.product} - {self.quantity}"
