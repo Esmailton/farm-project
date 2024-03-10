@@ -4,7 +4,8 @@
     --highlight-color: #ffc107; /* Amarelo */  
     --light-gray: #f2f2f2;
     --medium-gray: #cccccc;
-    --dark-gray: #666666;
+    --dark-gray: hsl(0, 0%, 40%);
+    --dark-gray-32: #363636;
     --write: #fff;
     --light-green: #a1d99b;
     --medium-green: #74c476;
@@ -16,6 +17,8 @@
     --medium-dark-green: #238b45;
     --dark-green: #005a32;
     --darkest-green: #00441b;
+    --back: #000000;
+    
   
 }
 

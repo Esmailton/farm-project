@@ -1,6 +1,6 @@
 .header{
     background-color: var(--write);
-    box-shadow: 1px 1px 4px var(--medium-light-green);
+    box-shadow: 1px 1px 4px var(--darkest-green);
     height: 80px;
     width: 100%;
     box-sizing: content-box;

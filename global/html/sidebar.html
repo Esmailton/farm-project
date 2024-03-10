@@ -1,125 +1,102 @@
 {% load static %}
-<nav id="sidebar" class="open-sidebar">
-    <div id="sidebar-content">
-        <div id="logo" class="logo-sidebar">
-            <div class="item-description">
-                <img id="user-avatar" src="{% static 'global/imgs/agricultue.jpeg' %}" alt="LOGO">
-            </div>
-            <button id="open-btn">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-        <ul id="side-items">
-            <li class="side-item active">
-                <a href="#">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <span class="item-description">
-                        Dashboard
-                    </span>
-                </a>
-            </li>
-            <li class="side-item">
-                <a href="#">
-                    <i class="fa-solid fa-house-chimney-window"></i></i> <span class="item-description">
-                        INICIO
-                    </span>
-                </a>   
-            </li>
-            <li class="side-item">
-                <a href="#">
-                    <i class="fa-solid fa-house-chimney-window"></i></i> <span class="item-description">
-                        <span class="item-description">
-                        FAZENDA
-                    </span>
-                </a>
-                <ul class="submenu">
-                    <li class="side-subitem">
-                        <a href="#">
-                            Fazenda
-                        </a>
-                    </li>
-                    <li class="side-subitem">
-                        <a href="#">
-                            Oficina
-                        </a>
-                    </li>
-                    <li class="side-subitem">
-                        <a href="#">
-                            Frota
-                        </a>
-                    </li>
-                    <li class="side-subitem">
-                        <a href="#">
-                            Veiculos
-                        </a>
-                    </li>
-                    <li class="side-subitem">
-                        <a href="#">
-                            Funcionario
-                        </a>
-                    </li>
 
-                </ul>
-            </li>
-            <li class="side-item">
-                <a href="#">
-                    <i class="fa-solid fa-boxes-stacked"></i>          
-                    <span class="item-description">
-                        PRODUTO
-                    </span>
-                </a>
-                <ul class="submenu">
-                    <li class="side-subitem">
-                        <a href="#">
-                            Categoria
-                        </a>
-                    </li>
-                    <li class="side-subitem">
-                        <a href="#">
-                            Produto
-                        </a>
-                    </li>
-                    <li class="side-subitem">
-                        <a href="#">
-                            Localização
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="side-item">
-                <a href="#">
-                    <i class="fa-solid fa-warehouse"></i>                    
-                    <span class="item-description">
-                        INVENTÁRIO
-                    </span>
-                </a>
-                <ul class="submenu">
-                    <li class="side-subitem">
-                        <a href="#">
-                            Inventário  
-                        </a>
-                    </li>
-
-                    <li class="side-subitem">
-                        <a href="#">
-                            Corredor
-                        </a>
-                    </li>
-                    <li class="side-subitem">
-                        <a href="#">
-                            Prateleira
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="side-item">
-                <a href="#">
-                    <i class="fa-solid fa-gear"></i>
-                    <span class="item-description">
-                        CONFIGURAÇÕES
-                    </span>
-                </a>
-            </li>
-        </ul>
+<div class="sidebar">
+    <div class="logo-details">
+        
+        <i class="fa-solid fa-align-justify bx-menu"></i>
+        <span class="logo_name">4bit - Tech</span>
     </div>
-</nav>
+
+    <ul class="nav-links">
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-chart-gantt"></i>
+                <span class="link_name">Dashboard</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Dashboard</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <div class="icon-link">
+                <a href="#">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                    <span class="link_name">Fazendas</span>
+                </a>
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Fazendas</a></li>
+                <li><a href="#">Frotas</a></li>
+                <li><a href="#">Veiculos</a></li>
+                <li><a href="#">Funcionarios</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <div class="icon-link">
+                <a href="#">
+                    <i class="fa-solid fa-warehouse"></i>
+                    <span class="link_name">Inventário</span>
+                </a>
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Inventário</a></li>
+                <li><a href="#">Corredor</a></li>
+                <li><a href="#">Prateleiras</a></li>
+            </ul>
+        </li>
+
+
+        <li>
+            <div class="icon-link">
+                <a href="#">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                    <span class="link_name">Itens</span>
+                </a>
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Itens</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Produtos</a></li>
+            </ul>
+        </li>
+
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-align-right"></i>
+                <span class="link_name">Parametros</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Parametros</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#">
+                <i class="fa-solid fa-gear"></i>
+                <span class="link_name">Configurações</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Configurações</a></li>
+            </ul>
+        </li>
+        
+        <li>
+        <div class="profile-details">
+            <div class="profile-content">
+                <img src="{% static 'global/imgs/agricultue.jpeg' %}" alt="LOGO">
+            </div>
+                <div class="name-job">
+                    <div class="profile_name"> 4bit - Tech</div>
+                    <div class="job">Fazenda</div>
+                </div>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </div>
+            </li>
+    </ul>
+</div>
